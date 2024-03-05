@@ -1,0 +1,55 @@
+<div class="display-6">
+    Apply
+</div>
+
+<form method="post" asp-action="Apply">
+    <div class="form-group my-2">
+        <label>Email</label>
+        <input required class="form-control" type="text" name="Email">
+    </div>
+    <div class="form-group my-2">
+        <label>First Name</label>
+        <input required class="form-control" name="Firstname">
+    </div>
+    <div class="form-group my-2">
+        <label> Last Name</label>
+        <input required class="form-control" type="text" name="Lastname">
+    </div>
+    <div class="form-group my-2">
+        <label>Age</label>
+        <select required class="form-control" name="Age">
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+        </select>
+    </div>
+    <fieldset>
+        <legend class="py-2">
+            <strong>
+                Select One Course
+            </strong>
+            <p class="pt-2">
+                <input type="radio" name="SelectedCourse" value="ASP.NET Core MVC" checked />
+                <label>ASP.NET Core MVC</label>
+            </p>
+            <p>
+                <input type="radio" name="SelectedCourse" value="ASP.NET Core MVC Web API" />
+                <label>ASP.NET Core Web API</label>
+            </p>
+            <p>
+                <input type="radio" name="SelectedCourse" value="Blazor" />
+                <label>Blazor</label>
+            </p>
+        </legend>
+
+    </fieldset>
+    <div class="text-center">
+
+        <button class="btn btn-outline-success" type="submit">Apply</button>
+        <a href="/">
+            <button class="btn btn-outline-warning" type="submit">Home</button>
+        </a>
+    </div>
+</form>
