@@ -1,0 +1,19 @@
+@using Glcyzn.Controllers
+<center>
+    <div class="text-info border border-4 border-danger my-4 py-4">
+
+        <h2>Products</h2>
+
+        @foreach (var item in Model)
+        {
+            <div class="btn-outline-warning flex border my-3 mx-4 border-2 border-success ">
+
+                <p>@item.ProductName</p>
+                <p>@item.Price</p>
+                <p>@item.Stock</p>
+                <a class="btn btn-danger" asp-controller="Product" asp-action="Remove" asp-route-id="@item.Id">Sil</a>
+            </div>
+        }
+    </div>
+    
+</center>

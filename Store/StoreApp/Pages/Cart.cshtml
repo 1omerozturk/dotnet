@@ -1,0 +1,86 @@
+@page "/Cart"
+@model CartModel
+
+
+<div
+    class="container bg-gradient bg-dark mb-2 my-2"
+>
+    
+
+<div
+    class="table-responsive-md mx-5 my-5"
+>
+<div class="text-center">
+    <h3 class="d-inline-block bg-warning fw-bold rounded-circle border border-dark p-2">CART</h3>
+</div>
+    <table>
+        <thead class="table-info fs-4 text-center">
+            <tr class="text-center">
+                <th>Product </th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Subtotal</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+        <tbody class="text-center fw-bold">
+            @foreach(var line in Model.Cart?.Lines ?? Enumerable.Empty<CartLine>()){
+                <tr>
+
+                <td>@line.Product.ProductName 
+                    <img height="100" width="75" src="@line.Product.ImageUrl" alt="@line.Product.ImageUrl"/>
+                    </td>
+                <td>@line.Quantity</td>
+                <td>@line.Product.Price.ToString("c")</td>
+                <td>@((line.Product.Price*line.Quantity).ToString("c2"))</td>
+                <td>
+
+                    <form method="post" asp-page-handler="Remove">
+                        <input type="hidden" name="id" value="@line.Product.ProductId"/>
+                        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl"/>
+                        <button type="submit" class="btn btn-outline-danger fw-bold text-secondary">
+                           <i class="text-danger fa fa-trash px-1"></i> Delete
+                        </button>
+                    </form>
+
+
+
+
+                    @* <div class="btn-group gap-2 rounded">
+                        <button class="btn btn-outline-success" type="button">
+                            View
+                        </button>
+                        <button class="btn btn-outline-danger rounded" type="button">
+                            Delete
+                        </button>
+                    </div> *@
+                </td>
+                </tr>
+            }
+           
+          
+        </tbody>
+        <tfoot class="text-right">
+            <td colspan="3" class="text-right fw-bold text-dark bg-light">
+                 <div class="d-inline-block border border-3 border-danger rounded p-1 bg-light">
+Total :            </div>
+            </td>
+            <td class="bg-light">
+            </td>
+            <td colspan="" class="text-right text-dark fw-bold bg-light">
+            <div class="d-inline-block border border-3 border-danger rounded p-1 bg-light">
+                @Model.Cart?.ComputeTotalValue().ToString("c2")
+            </div>
+            </td>
+        </tfoot>
+    </table>
+    <div class="text-center">
+
+    <div class="btn-group my-2">
+        <a class="btn btn-outline-primary mx-auto text-center" href="@Model?.ReturnUrl">Continue Shopping</a>
+        <a class="btn btn-outline-primary mx-auto mx-2 text-center" asp-action="Checkout" asp-controller="Order">Checkout</a>
+    </div>
+    </div>
+</div>
+</div>
+

@@ -1,0 +1,73 @@
+@model Product
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css"  asp-append-version="true" />
+    <link rel="stylesheet"  href="~/lib/font-awesome/css/all.css" />
+  </head>
+
+  <body>
+   
+
+<div class="container-lg w-100 bg-secondary bg-gradient my-4">
+
+<div class="row">
+  <div class="col-md-12 ">
+    <div class="text-center">
+      <h6 class="display-6">
+        @Model.ProductName
+      </h6>
+      <img class="img-fluid shadow rounded-3" height="500" width="50%" src="@Model.ImageUrl" alt="@Model.ProductName"/>
+    </div>
+  </div>
+</div>
+
+<div class="text-center">
+
+<p role="button" class="p-1 text-center my-2 text-light fs-3 fw-bold d-inline-block shadow sahdow-warning justify-content-center border border-dark">@Model.Price.ToString("c")</p>
+</div>
+<div class="text-center my-4 bg-gradient">
+
+<div class="btn-group gap-5 my-4 ">
+<a class="btn btn-outline-dark fw-bold" asp-controller="Home" asp-action="Index">
+  <i class="fa-solid fa-house"></i>
+  
+  Home
+</a>
+
+<form id="@Model.ProductId" asp-page="/cart" method="post">
+<input type="hidden" asp-for="ProductId" />
+<input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
+<button type="submit" class="btn btn-outline-light fw-bold">
+<i class="fa fa-cart-plus" aria-hidden="true"></i>
+Add Cart
+</button>
+</form>
+
+<a class="btn btn-outline-warning fw-bold" asp-controller="Product" asp-action="Index"> 
+  <i class="fa-solid fa-list"></i>
+  Products
+</a>
+
+</div>
+</div>
+</div>
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js"></script>
+    <script src="~/lib/font-awesome/js/all.min.js"></script>
+  </body>
+</html>

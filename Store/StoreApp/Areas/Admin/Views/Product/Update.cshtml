@@ -1,0 +1,106 @@
+@model ProductDtoForUpdate
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+    
+ @{
+    Layout="_Layout";
+    }
+    
+    <title>Product Update</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
+</head>
+
+<body>
+
+    <div class="container bg-light bg-gradient">
+        <div class="text-center my-4">
+            <h2>Create Product</h2>
+            </div>
+            <div class="display-6">
+                <form method="post" asp-action="Update" enctype="multipart/form-data">
+
+                    <div class="text-danger text-gradient" asp-validation-summary="All">
+
+                    </div>
+                 
+                    <input type="hidden" asp-for="ProductId"/>
+                     <div class="form-group my-3">
+         <select role="button" class="form-control" asp-items="@ViewBag.Categories" asp-for="CategoryId">
+         </select>
+    </div>
+
+                    <div class="form-group">
+                       
+
+                           <label class="fs-5 mx-left">
+                        Product Name
+                    </label>
+                        <input type="text" placeholder="Product Name" asp-for="ProductName" class="form-control my-2"
+                            aria-describedby="helpId" />
+
+                           <label class="fs-5 mx-left">
+                     Summary
+                    </label>
+                        <input type="text" placeholder="Summary" asp-for="Summary" class="form-control my-2"
+                            aria-describedby="helpId" />
+                            
+                           <label class="fs-5 mx-left">
+                        Product Price
+                    </label> 
+                        <input type="text" placeholder="Price" asp-for="Price" class="form-control my-2"
+                            aria-describedby="helpId" />
+
+                        <div class="form-group my-2 text-center mx-auto">
+                            <img role="button" class="shadow-lg rounded pointer" src="@Model?.ImageUrl" width="150">
+
+                        </div>
+                           <label asp-for="ImageUrl" class="fs-5 mx-left">
+                        Image
+                    </label> 
+                        <input class="form-control" type="file" placeholder="Image Url" name="file"/>
+
+                    </div>
+
+                    <div class="form-group my-2">
+                        <div class="btn-group gap-2">
+
+                            <button class="btn btn-dark my-3" type="submit">
+                                <i class="fa fa-save">
+                                </i>
+                                Update
+
+                            </button>
+
+
+                            <a asp-action="Index" class="btn btn-outline-warning">
+                                <i class="fa fa-list"></i>
+
+                                Home
+                            </a>
+
+                        </div>
+                    </div>
+                </form>
+            
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js"></script>
+    <script src="~/lib/font-awesome/js/all.min.js"></script>
+</body>
+
+</html>

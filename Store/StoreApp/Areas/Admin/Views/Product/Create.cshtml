@@ -1,0 +1,91 @@
+@model ProductDtoForInsertion
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
+</head>
+
+
+<body>
+
+    @{
+        Layout = "_Layout";
+    }
+
+
+    <div class="container bg-light bg-gradient">
+        <div class="text-center my-4">
+            <h2>Create Product</h2>
+            <div class="display-6">
+                <form method="post" asp-action="Create" enctype="multipart/form-data">
+
+                    <div class="text-danger" asp-validation-summary="All">
+                    </div>
+                    <div class="form-group my-3">
+                        <select class="form-control" asp-items="@ViewBag.Categories" asp-for="CategoryId">
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" placeholder="Product Name" name="ProductName" id="ProductName"
+                            class="form-control my-2" aria-describedby="helpId" />
+
+                        <div class="form-group my-2">
+                            <input type="text" placeholder="Summary " name="Summary" id="Summary"
+                                class="form-control my-2" aria-describedby="helpId" />
+                        </div>
+
+                        <input type="text" placeholder="Price" name="Price" id="Price" class="form-control my-2"
+                            aria-describedby="helpId" />
+
+                    </div>
+                     <div class="form-group my-2">
+                            <img class="rounded shadow" src="@Model?.ImageUrl" width="150" height="150">
+
+                        </div>
+                     <div class="form-group my-2">
+                        <input placeholder="Image" name="file" type="file" class="form-control">
+                        </div>
+                    
+
+                    <div class="form-group my-2">
+                        <div class="btn-group gap-2">
+
+                            <button class="btn btn-dark fw-bol" type="submit">
+                                <i class="fa fa-save text-light">
+                                </i>
+                                Save
+                            </button>
+
+                            <button class="btn btn-warning fw-bold" type="submit">
+                                <i class="fa fa-list text-dark" asp-action="Index">
+                                </i>
+                                Products
+                            </button>
+
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js"></script>
+    <script src="~/lib/font-awesome/js/all.min.js"></script>
+</body>
+
+</html>

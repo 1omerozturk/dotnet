@@ -1,0 +1,39 @@
+@model Product
+@using StoreApp.Infrastructure.Extensions
+
+<div class="col-sm-12 col-md-4 my-2">
+    <div class="card" style="width:18rem;">
+        <div class="card-header fw-bold text-center">
+              @Model?.ProductName
+        </div>
+        <img class="card-img-top" height="auto" width="auto" src="@Model?.ImageUrl" alt="Product" />
+
+        <div class="card-body">
+            <h5 class="card-text">
+                <div class="fw-bold text-center bg-gradient bg-dark text-danger lead p-2 rounded-4 border border-gradient border-secondary border-3 ">
+                @Model?.Price.ToString("C2")
+                </div>
+            </h5>
+            <p class="card-text">
+                @Model?.Summary
+            </p>
+            <div class="d-flex justify-content-center">
+
+            <div class="btn btn-group gap-3">
+
+            <form id="@Model?.ProductId" asp-page="/cart" method="post">
+            <input type="hidden" asp-for="ProductId" />
+            <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                <button type="submit" class="btn btn-outline-dark fw-bold">
+                    <i class="fa fa-cart-plus"></i> Add Cart
+                </button>
+            </form>
+            <a asp-action="Get" asp-controller="Product" asp-route-id="@Model?.ProductId" class="btn btn-outline-primary fw-bold">
+                <i class="fa solid fa-arrow-right"></i>
+                Details
+            </a>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

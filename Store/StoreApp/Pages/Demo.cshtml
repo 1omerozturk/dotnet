@@ -1,0 +1,36 @@
+@page
+@model StoreApp.Pages.DemoModel
+@{
+
+}
+
+<div class="text-center w-75 bg-gradient bg-secondary mx-auto">
+    <h3 class="text-warning">You are welcome <span class="fw-bolder text-light">
+    @Model?.FullName
+    </span>
+    çıkış ikonu
+@while(@Model?.FullName is not null){
+    <div role="button" class="d-inline-block text-danger border border-3 border-dark m-2"><i class="fa fa-door-open"></i> Quit</div>
+}
+    </h3>
+    <p>
+        @* @HttpContext.Session.GetString("name"); *@
+    </p>
+@while(@Model?.FullName==""){
+
+    <i class="fa fa-user-circle fa-3x text-dark my-2" aria-hidden="true"></i>
+<form method="post" asp-page="/demo">
+    <div class="form-group w-50 mx-auto">
+        <i class="fa fa-user-secret" aria-hidden="true"></i>
+        <input type="text" name="name" placeholder="Name" size="30"/>
+    </div>
+    <div class="form-group my-2 w-50 mx-auto">
+
+        <i class="fa fa-key" aria-hidden="true"></i>
+        <input class="mb-4" type="password" name="password" size="30" placeholder="Password"/>
+    </div>
+        <button class="btn btn-outline-light">Login</button>
+  
+</form>
+}
+</div>

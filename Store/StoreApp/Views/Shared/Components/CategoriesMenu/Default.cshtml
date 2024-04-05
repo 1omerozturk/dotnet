@@ -1,0 +1,16 @@
+@model IEnumerable<Entities.Models.Category>
+
+<div class="my-4">
+
+<div class="list-group">
+    @foreach (var cat in Model)
+    {
+        <li class="list-group-item my-1">
+            <a asp-action="Index" onclick="(this)=>this.this.active;" asp-route-categoryId="@cat.CategoryId" class="btn btn-outline-dark rounded-4 w-100">
+                 
+             @cat.CategoryName
+            </a>
+        </li>
+    }
+</div>
+</div>

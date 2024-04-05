@@ -1,0 +1,15 @@
+@model IEnumerable<Entities.Models.Category>
+
+ @{
+    Layout="_Layout";
+    }
+
+<div>
+
+    <ul class="list-group">
+        @foreach(var item in Model)
+        {
+            <li class="list-group-item my-3">@item.CategoryName</li>
+        }
+    </ul>
+</div>

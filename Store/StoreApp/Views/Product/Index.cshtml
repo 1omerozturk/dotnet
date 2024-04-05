@@ -1,0 +1,46 @@
+<div class="text-center mt-3">
+    <h1 class="d-inline-block bg-gradient bg-secondary rounded-5 p-1 px-2">Products</h1>
+</div>
+
+<div class="row my-1 w-100">
+    <div class="col-md-2 bg-gradient h-50 bg-dark rounded-4">
+        <div class="text-center mt-3">
+            <h3 class="d-inline-block justify-content-between text-light bg-gradient bg-secondary px-3 rounded-5">
+                <i class="fa fa-bars fa-solid text-light" aria-hidden="true"></i>
+                Categories</h3>
+        </div>
+        @await Component.InvokeAsync("CategoriesMenu")
+        <br/>
+        @await Component.InvokeAsync("ProductFilterMenu")
+        <br/>
+        <div products="" number="3"></div>
+
+    </div>
+    <div class="col-sm-2 col-md-10">
+
+        <div class="row my-3 text-center">
+
+            @foreach (Product prd in Model.Products)
+            {
+                <partial class="mx-auto" name="_ProductCard" model="@prd" />
+            }
+        </div>
+        <div class="text-center">
+            <div page-model="@Model?.Pagination" page-action="Index" page-class="btn"
+                page-classes-normal="btn-outline-dark" page-class-selected="btn-primary" page-classes-enabled="true"
+                class="btn-group gap-2 mx-auto">
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+@{
+    Layout = "_Layout";
+
+}
