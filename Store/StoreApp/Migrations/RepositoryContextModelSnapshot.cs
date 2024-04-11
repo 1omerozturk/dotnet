@@ -266,22 +266,22 @@ namespace StoreApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "934c1651-7e43-4f7e-addb-d0b6897e3d02",
-                            ConcurrencyStamp = "5b67854f-c63c-464b-90dd-7fb581ddb67f",
+                            Id = "33a64284-466d-45c0-959b-205c37c7ab00",
+                            ConcurrencyStamp = "b8fb7883-a43d-40c7-a7bf-77b05da33092",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "d5634972-7f4b-4245-96ee-eeae89ccffab",
-                            ConcurrencyStamp = "26254a87-1612-4d06-9470-f5513c0cae26",
+                            Id = "87866460-4af6-435a-b449-6040568d2b12",
+                            ConcurrencyStamp = "8d5d0c28-2c15-47da-852e-c1e85c39ba3c",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
-                            Id = "12aac701-0fa6-400e-9d64-1edf09a70b67",
-                            ConcurrencyStamp = "27bfd22d-20d1-4771-9402-1115a8f842b3",
+                            Id = "ba701629-32b1-49be-a5cc-84948df79f80",
+                            ConcurrencyStamp = "ae842993-b3ca-47f2-bd10-54e19c637305",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

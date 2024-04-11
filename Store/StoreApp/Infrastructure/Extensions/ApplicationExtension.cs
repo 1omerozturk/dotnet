@@ -4,7 +4,7 @@ using Repositories;
 
 namespace StoreApp.Infrastructure.Extensions
 {
-    public static class ApplicationExtnsion
+    public static class ApplicationExtension
     {
         public static void ConfigureAndCheckMigration(this IApplicationBuilder app)
         {
@@ -36,7 +36,7 @@ namespace StoreApp.Infrastructure.Extensions
         public static async void ConfigureDefaultAdminUser(this IApplicationBuilder app)
         {
             const string adminUser = "Admin";
-            const string adminPassword = "Admin+123456";
+            const string adminPassword = "123456";
 
             // UserManager
             UserManager<IdentityUser> userManager = app
@@ -59,11 +59,13 @@ namespace StoreApp.Infrastructure.Extensions
                 {
                     Email = "oozturk@gmail.com",
                     PhoneNumber = "93593875896",
-                    UserName = "adminUser",
+                    UserName = adminUser,
                 };
                 var result = await userManager.CreateAsync(user, adminPassword);
                 if (!result.Succeeded)
+                {
                     throw new Exception("Admin user could not created.");
+                }
 
                 var roleResult = await userManager.AddToRolesAsync(user,
                 roleManager
@@ -71,9 +73,12 @@ namespace StoreApp.Infrastructure.Extensions
                 .Select(r => r.Name)
                 .ToList()
                 );
-                if(!roleResult.Succeeded)
+                if (!roleResult.Succeeded)
+                {
+
                     throw new Exception("System have problems with role defination for admin");
-            }   
+                }
+            }
 
 
 

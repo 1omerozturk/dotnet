@@ -34,10 +34,10 @@ namespace StoreApp.Infrastructure.Extensions
              options.Password.RequireLowercase=false;   
              options.Password.RequireUppercase=false;   
              options.Password.RequireDigit=false;   
-             options.Password.RequiredLength=6;
+             options.Password.RequiredLength=5;
             }
             )
-            .AddEntityFrameworkStores<RepositoryContext>();
+            .AddEntityFrameworkStores<RepositoryContext>(); 
         }
 
 
