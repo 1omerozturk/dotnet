@@ -11,8 +11,12 @@
 @if (User.Identity.IsAuthenticated)
 {
     <li class="nav-item">
-        <a class="nav-link" aria-current="page" asp-area="" asp-controller="Account"
-        asp-route-returnUrl="@Context.Request.PathAndQuery()" asp-action="Logout">
+        <a class="nav-link" 
+        aria-current="page" 
+        asp-area="" 
+        asp-controller="Account"
+        asp-route-returnUrl="@Context.Request.PathAndQuery()"
+        asp-action="Logout">
          <i class="fa-solid fa-right-from-bracket"></i>
         Logout</a>
     </li>

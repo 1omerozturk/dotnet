@@ -22,12 +22,14 @@
             margin-left: 2px;
             border-radius: 30%;
         }
- .navbar-nav .nav-item a{
-    display: inline-block;
-    color: black;
-    font-weight: 500;
-    font-family: cursive;
-    }
+
+        .navbar-nav .nav-item a {
+            display: inline-block;
+            color: black;
+            font-weight: 500;
+            font-family: cursive;
+        }
+
         .navbar-nav .nav-item a:hover {
             opacity: .6;
             background-color: black;
@@ -61,7 +63,13 @@
                             (@await Component.InvokeAsync("CategorySummary"))</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" aria-current="page" asp-controller="Order" asp-action="Index">Order</a>
+                        <a class="nav-link" aria-current="page" asp-controller="Order" asp-action="Index">Orders</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" aria-current="page" asp-controller="Role" asp-action="Index">Roles</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" aria-current="page" asp-controller="User" asp-action="Index">Users</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ">

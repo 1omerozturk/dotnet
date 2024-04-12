@@ -38,8 +38,8 @@ namespace StoreApp.Infrastructure.TagHelpers
             {
                 TagBuilder li=new TagBuilder("li");
                 TagBuilder a=new TagBuilder("a");
-                a.Attributes.Add("href",$"/product/get/{product.ProductId}");
-                a.InnerHtml.AppendHtml(product.ProductName);
+                a.Attributes.Add("href",$"/product/get/{product?.ProductId}");
+                a.InnerHtml.AppendHtml(product?.ProductName);
                 li.InnerHtml.AppendHtml(a);
                 ul.InnerHtml.AppendHtml(li);
             }

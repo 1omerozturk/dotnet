@@ -24,20 +24,20 @@ namespace StoreApp.Infrastructure.Extensions
 
         }
 
-            // Kayıt için gerekli gereksinimleri tanımlamak için aşağıdaki kodlar kullanılır. 
+        // Kayıt için gerekli gereksinimleri tanımlamak için aşağıdaki kodlar kullanılır. 
         public static void ConfigureIdentity(this IServiceCollection services)
         {
-            services.AddIdentity<IdentityUser,IdentityRole>(options=>
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
-             options.SignIn.RequireConfirmedAccount=false;
-             options.User.RequireUniqueEmail=true;
-             options.Password.RequireLowercase=false;   
-             options.Password.RequireUppercase=false;   
-             options.Password.RequireDigit=false;   
-             options.Password.RequiredLength=5;
+                options.SignIn.RequireConfirmedAccount = false;
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 5;
             }
             )
-            .AddEntityFrameworkStores<RepositoryContext>(); 
+            .AddEntityFrameworkStores<RepositoryContext>();
         }
 
 
@@ -68,6 +68,7 @@ namespace StoreApp.Infrastructure.Extensions
             services.AddScoped<IProductService, ProductManager>();
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<IOrderService, OrderManager>();
+            services.AddScoped<IAuthService, AuthManager>();
         }
 
         // url kısmıda routing ifadeleri küçük - büyük harfler yerine düzenleme ile hepsi küçük harf olacak şekilde düzenlenecek.

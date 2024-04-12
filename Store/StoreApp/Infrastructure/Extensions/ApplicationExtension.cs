@@ -16,10 +16,10 @@ namespace StoreApp.Infrastructure.Extensions
             // veritabanında her güncellemeden sonra manuel olarak girilen "dotnet ef database update" komutu yerine yapılan değişiklikleri otomatik olarak yapan kod bloğu tanımlandı.
             // Sadece uygulama ilk başladığında init yapmak gerekiyor. Geri kalanı kendisi update yapacaktır.
 
-            if (context.Database.GetPendingMigrations().Any())
-            {
-                context.Database.Migrate();
-            }
+            // if (context.Database.GetPendingMigrations().Any())
+            // {
+            //     context.Database.Migrate();
+            // }
         }
         // Para birimleri ölçü birimleri için yerelleştirme ve genelleştirme yapmak için bu tarz fonksiyonlar kullanılır.
         public static void ConfigureLocalization(this WebApplication app)
@@ -36,7 +36,7 @@ namespace StoreApp.Infrastructure.Extensions
         public static async void ConfigureDefaultAdminUser(this IApplicationBuilder app)
         {
             const string adminUser = "Admin";
-            const string adminPassword = "123456";
+            const string adminPassword = "admin123!";
 
             // UserManager
             UserManager<IdentityUser> userManager = app
@@ -64,7 +64,8 @@ namespace StoreApp.Infrastructure.Extensions
                 var result = await userManager.CreateAsync(user, adminPassword);
                 if (!result.Succeeded)
                 {
-                    throw new Exception("Admin user could not created.");
+                    string errorMessage = string.Join(", ", result.Errors.Select(e => e.Description));
+                    throw new Exception($"Admin user creation failed: {errorMessage}");
                 }
 
                 var roleResult = await userManager.AddToRolesAsync(user,
