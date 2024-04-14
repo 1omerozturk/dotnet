@@ -10,6 +10,7 @@ builder.Services.ConfigureIdentity();
 builder.Services.ConfigureDbContext(builder.Configuration);
 
 builder.Services.ConfigureSession();
+builder.Services.ConfigureApplicationCookie();
 
 
 

@@ -1,15 +1,22 @@
 @model IEnumerable<IdentityRole>
 
-<div class="text-center">
-    <div class="display-6">
+@{
+    Layout="_Layout";
+}
+
+<div class="text-center bg-secondary">
+    <div class="display-6 text-light fw-bold">
         Roles
     </div>
-</div>
+    </div>
 
-<ul class="list-group">
+<div class="px-5 bg-gradient bg-secondary mx-auto text-center">
+
+<ul class="list-group text-center d-inline-block col-6">
 @foreach(var role in Model){
-<li class="list-group-item">
+<li class="list-group-item fw-bold my-2 border-2 border-dark rounded-4 fs-5 bg-danger bg-gradient">
 @role.Name
 </li>
 }
 </ul>
+</div>
