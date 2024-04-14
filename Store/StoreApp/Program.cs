@@ -3,6 +3,11 @@ using StoreApp.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// service katmanına api ulaşmak için controller yazmak için bu kod
+builder.Services.AddControllers()
+    .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
+
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.ConfigureIdentity();
@@ -56,6 +61,9 @@ app.UseEndpoints(endpoints =>
         pattern: "{controller=Home}/{action=Index}/{id?}"
     );
     endpoints.MapRazorPages();
+    
+    // api ye ulaşmak için endpointslere bu kod eklendi
+    endpoints.MapControllers();
 });
 
 app.ConfigureAndCheckMigration();
