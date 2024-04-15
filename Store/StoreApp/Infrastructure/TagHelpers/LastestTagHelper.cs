@@ -22,12 +22,10 @@ namespace StoreApp.Infrastructure.TagHelpers
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             TagBuilder div = new TagBuilder("div");
-            div.Attributes.Add("class", "my-3");
-
             TagBuilder h6 = new TagBuilder("h6");
-            h6.Attributes.Add("class", "lead text-success fw-bold");
+            h6.Attributes.Add("class", "lead text-light fw-bold");
             TagBuilder icon = new TagBuilder("i");
-            icon.Attributes.Add("class", "fa fa-box text-success");
+            icon.Attributes.Add("class", "fa fa-box text-light");
 
             h6.InnerHtml.AppendHtml(icon);
             h6.InnerHtml.AppendHtml(" Lastest Products");

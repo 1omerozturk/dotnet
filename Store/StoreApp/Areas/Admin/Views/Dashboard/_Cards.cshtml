@@ -1,0 +1,166 @@
+<style>
+    .card {
+        background-color: #415b9bbb;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        justify-content: center;
+        align-items: center;
+        height: 20rem;
+        width: 30rem;
+    }
+
+    .card2 {
+        background-color: #78df97bb;
+         border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        justify-content: center;
+        align-items: center;
+         height: 20rem;
+        width: 30rem;
+    }
+   
+    .card3 {
+        background-color: #b178dfbb;
+         border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        justify-content: center;
+        align-items: center;
+         height: 20rem;
+        width: 30rem;
+    }
+   
+</style>
+<div class="row bg-gradient">
+    <div class="col-lg-4 my-1">
+        <div class="card mx-4">
+            <div class="cord-body text-center">
+                <h6 class="card-subtitle mb-2">Number of</h6>
+                <h5 class="card-title"><b>
+                        Products
+                    </b>
+                </h5>
+                <h3 class="text-center display-3 my-3 fw-bold">
+                    @await Component.InvokeAsync("ProductSummary")
+                </h3>
+
+                <a asp-controller="Product" asp-action="Index"
+                    class="card-link text-light btn btn-outline-dark">Products</a>
+
+                <a asp-controller="Product" asp-action="Create"
+                    class="card-link text-light btn btn-outline-dark">New Product</a>
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-4 my-5">
+        <div class="card2 mx-4" >
+            <div class="cord-body text-center my-5">
+                <h6 class="card-subtitle my-2">Number of</h6>
+                <h5 class="card-title"><b>
+                        Categories
+                    </b>
+                </h5>
+                <h3 class="text-center display-3 my-3 fw-bold">
+                    @await Component.InvokeAsync("CategorySummary")
+                </h3>
+
+                <a asp-controller="Category" asp-action="Index"
+                    class="card-link text-success btn btn-outline-dark">Categories</a>
+
+                <a asp-controller="Category" asp-action="Create"
+                    class="card-link text-success btn btn-outline-dark">New Category</a>
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-4 my-1">
+        <div class="card3 mx-4">
+            <div class="cord-body text-center my-5">
+                <h6 class="card-subtitle my-2">Number of</h6>
+                <h5 class="card-title"><b>
+                        Orders in Progress
+                    </b>
+                </h5>
+                <h3 class="text-center display-3 my-3 fw-bold">
+                    @await Component.InvokeAsync("OrderInProgress")
+                </h3>
+
+                <a asp-controller="Order" asp-action="Index"
+                    class="card-link text-light btn btn-outline-dark">Orders</a>
+
+               
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(() => {
+        $(".card").hover(
+            function () {
+                $(this).css({
+                    "transform": "scale(1.1)",
+                    "background-color": "#6584d4f6",
+                    "box-shadow": "0 8px 16px rgba(0, 0, 0, 0.2)",
+                    "z-index": "1"
+                });
+            },
+            function () {
+                $(this).css({
+                    "transform": "scale(1)",
+                    "background-color": "#415b9bbb",
+                    "box-shadow": "0 4px 8px rgba(0, 0, 0, 0.1)",
+                    "z-index": "0"
+                });
+            }
+        );
+        $(".card2").hover(
+            function () {
+                $(this).css({
+                    "transform": "scale(1.1)",
+                    "background-color": "#78df97bb",
+                    "box-shadow": "0 8px 16px rgba(0, 0, 0, 0.2)",
+                    "z-index": "1"
+                });
+            },
+            function () {
+                $(this).css({
+                    "transform": "scale(1)",
+                    "background-color": "#92daa8bb",
+                    "box-shadow": "0 4px 8px rgba(0, 0, 0, 0.1)",
+                    "z-index": "0"
+                });
+            }
+        );
+        $(".card3").hover(
+            function () {
+                $(this).css({
+                    "transform": "scale(1.1)",
+                    "background-color": "#9a47ddcc",
+                    "box-shadow": "0 8px 16px rgba(0, 0, 0, 0.2)",
+                    "z-index": "1"
+                });
+            },
+            function () {
+                $(this).css({
+                    "transform": "scale(1)",
+                    "background-color": "#b178dfbb",
+                    "box-shadow": "0 4px 8px rgba(0, 0, 0, 0.1)",
+                    "z-index": "0"
+                });
+            }
+        );
+    });
+</script>
