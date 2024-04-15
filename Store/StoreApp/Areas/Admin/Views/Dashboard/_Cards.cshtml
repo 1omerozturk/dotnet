@@ -1,5 +1,5 @@
 <style>
-    .card {
+    .card0 {
         background-color: #415b9bbb;
         border-radius: 20px;
         overflow: hidden;
@@ -8,37 +8,59 @@
         justify-content: center;
         align-items: center;
         height: 20rem;
-        width: 30rem;
+        width: 25rem;
+    }
+    .cardt {
+        background-color: #44404065;
+        border: 2px solid rgb(0, 0, 0);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        justify-content: center;
+        align-items: center;
+        height: 20rem;
+        width: 25rem;
     }
 
     .card2 {
         background-color: #78df97bb;
-         border-radius: 20px;
+        border-radius: 20px;
         overflow: hidden;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
         justify-content: center;
         align-items: center;
-         height: 20rem;
-        width: 30rem;
+        height: 20rem;
+        width: 25rem;
     }
-   
+
     .card3 {
         background-color: #b178dfbb;
-         border-radius: 20px;
+        border-radius: 20px;
         overflow: hidden;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
         justify-content: center;
         align-items: center;
-         height: 20rem;
-        width: 30rem;
+        height: 20rem;
+         width: 25rem;
     }
-   
+    .card4 {
+        background-color: #bdcf58bd;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        justify-content: center;
+        align-items: center;
+        height: 20rem;
+        width: 25rem;
+    }
 </style>
-<div class="row bg-gradient">
-    <div class="col-lg-4 my-1">
-        <div class="card mx-4">
+<div class="row bg-gradient mx-auto">
+    <div class="col-md-3 my-3">
+        <div class="card0 mx-4">
             <div class="cord-body text-center">
                 <h6 class="card-subtitle mb-2">Number of</h6>
                 <h5 class="card-title"><b>
@@ -51,17 +73,16 @@
 
                 <a asp-controller="Product" asp-action="Index"
                     class="card-link text-light btn btn-outline-dark">Products</a>
-
-                <a asp-controller="Product" asp-action="Create"
-                    class="card-link text-light btn btn-outline-dark">New Product</a>
+                <a asp-controller="Product" asp-action="Create" class="card-link text-light btn btn-outline-dark">New
+                    Product</a>
 
 
             </div>
 
         </div>
     </div>
-    <div class="col-lg-4 my-5">
-        <div class="card2 mx-4" >
+    <div class="col-md-3 my-3">
+        <div class="card2 mx-4">
             <div class="cord-body text-center my-5">
                 <h6 class="card-subtitle my-2">Number of</h6>
                 <h5 class="card-title"><b>
@@ -75,16 +96,36 @@
                 <a asp-controller="Category" asp-action="Index"
                     class="card-link text-success btn btn-outline-dark">Categories</a>
 
-                <a asp-controller="Category" asp-action="Create"
-                    class="card-link text-success btn btn-outline-dark">New Category</a>
+                <a asp-controller="Category" asp-action="Create" class="card-link text-success btn btn-outline-dark">New
+                    Category</a>
 
 
             </div>
 
         </div>
     </div>
-    <div class="col-lg-4 my-1">
+    <div class="col-md-3 my-3">
         <div class="card3 mx-4">
+            <div class="cord-body text-center my-5">
+                <h6 class="card-subtitle my-2">Number of</h6>
+                <h5 class="card-title"><b>
+                        Users
+                    </b>
+                </h5>
+                <h3 class="text-center display-3 my-3 fw-bold">
+                    @await Component.InvokeAsync("UserSummary")
+                </h3>
+
+                <a asp-controller="User" asp-action="Index" class="card-link text-light btn btn-outline-dark">Orders</a>
+
+                <a asp-controller="User" asp-action="Create" class="card-link text-light btn btn-outline-dark">New
+                    User</a>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-3 my-3">
+        <div class="card4 mx-4">
             <div class="cord-body text-center my-5">
                 <h6 class="card-subtitle my-2">Number of</h6>
                 <h5 class="card-title"><b>
@@ -98,7 +139,7 @@
                 <a asp-controller="Order" asp-action="Index"
                     class="card-link text-light btn btn-outline-dark">Orders</a>
 
-               
+
 
 
             </div>
@@ -108,7 +149,7 @@
 </div>
 <script>
     $(document).ready(() => {
-        $(".card").hover(
+        $(".card0").hover(
             function () {
                 $(this).css({
                     "transform": "scale(1.1)",
@@ -157,6 +198,24 @@
                 $(this).css({
                     "transform": "scale(1)",
                     "background-color": "#b178dfbb",
+                    "box-shadow": "0 4px 8px rgba(0, 0, 0, 0.1)",
+                    "z-index": "0"
+                });
+            }
+        );
+        $(".card4").hover(
+            function () {
+                $(this).css({
+                    "transform": "scale(1.1)",
+                    "background-color": "#bdcf58",
+                    "box-shadow": "0 8px 16px rgba(0, 0, 0, 0.2)",
+                    "z-index": "1"
+                });
+            },
+            function () {
+                $(this).css({
+                    "transform": "scale(1)",
+                    "background-color": "#bdcf58bd",
                     "box-shadow": "0 4px 8px rgba(0, 0, 0, 0.1)",
                     "z-index": "0"
                 });

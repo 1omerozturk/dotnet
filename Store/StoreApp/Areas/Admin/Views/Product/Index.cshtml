@@ -1,11 +1,11 @@
-@model IEnumerable<Product>
+@model ProductListViewModel
 @{
   Layout = "_Layout";
 }
 
-<div class="container bg-light border border-2">
+<div class="bg-dark bg-gradient border border-2">
   <div class="text-center">
-    <div class="display-6 my-4 fw-bolder">
+    <div class="display-6 my-4 text-white fw-bolder">
       Products
     </div>
     <div class="d-flex justify-content-end mb-3"><a class="btn btn-success" asp-action="Create">
@@ -13,19 +13,29 @@
         Create
       </a>
     </div>
-    <table class="table table-dark table-hover table-xl  mx-auto">
+
+  </div>
+  
+  <div class="row mx-auto">
+    <div class="col-md-3 border border-2 rounded-4 bg-gradient bg-dark">
+      @await Component.InvokeAsync("CategoriesMenu")
+      @await Component.InvokeAsync("ProductFilterMenu")
+    </div>
+    <div class="col-md-9 border border-2 rounded-4 bg-dark">
+ <table class="table table-dark table-hover">
       <thead>
         <tr class="fs-4">
 
           <th>Id</th>
           <th>Image</th>
           <th>Product Name</th>
+          <th>Showcase</th>
           <th>Price</th>
           <th>Operations</th>
         </tr>
       </thead>
       <tbody>
-        @foreach (var prd in Model)
+        @foreach (var prd in Model.Products)
         {
           <tr>
             <td class="fw-bold">@prd.ProductId</td>
@@ -39,6 +49,11 @@
                 </div>
               </div>
             </td>
+            <td>
+              <div class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" checked="@prd.ShowCase" disabled />
+              </div>
+            </td>
             <td class="fw-bold">@prd.Price.ToString("c")</td>
             <td class="fw-bold">
               <div class="btn-group gap-2 justify-content-between">
@@ -50,7 +65,7 @@
                 <a data-toggle="tooltip" data-placement="top" title="Update" asp-action="Update"
                   asp-route-id="@prd.ProductId">
                   <button class="btn btn-outline-warning"> <i class="fa fa-edit"></i> </button>
-                  </a>
+                </a>
 
                 <a data-toggle="tooltip" data-placement="top" title="Delete" asp-action="Delete"
                   asp-route-id="@prd.ProductId">
@@ -62,9 +77,18 @@
         }
       </tbody>
     </table>
+  
+ <div class="text-center">
+            <div page-model="@Model?.Pagination" page-action="Index" page-class="btn"
+                page-classes-normal="btn-outline-light" page-class-selected="btn-primary" page-classes-enabled="true"
+                class="btn-group gap-2 mx-auto">
+            </div>
+        </div>
+
+   
   </div>
 </div>
-
+</div>
 @section Scripts
 {
   <script type="text/javascript">

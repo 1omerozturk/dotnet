@@ -70,12 +70,6 @@ public class ProductManager : IProductService
 
     }
 
-    public IEnumerable<Product> GetShowCaseProducts(bool trackChanges)
-    {
-       var products=_manager.Product.GetShowCaseProducts(trackChanges);
-       return products;
-    }
-
     public IEnumerable<Product> GetAllProductsWithDetails(ProductRequestParameters p)
     {
         return _manager.Product.GetAllProductsWithDetails(p);
@@ -86,5 +80,11 @@ public class ProductManager : IProductService
         return _manager.Product.FindAll(trackChanges)
         .OrderByDescending(prd=>prd.ProductId)
         .Take(n);
+    }
+
+    public IEnumerable<Product> GetShowcaseProducts(bool trackChanges)
+    {
+          var products = _manager.Product.GetShowcaseProducts(trackChanges);
+            return products;
     }
 }
