@@ -17,8 +17,14 @@ namespace StoreApp.Infrastructure.Extensions
         public static void ConfigureDbContext(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<RepositoryContext>(options =>
+
             {
-                options.UseSqlite(configuration.GetConnectionString("sqlconnection"),
+                // sqlite bağlantısı için 
+                // options.UseSqlite(configuration.GetConnectionString("sqlconnection"),
+                // b => b.MigrationsAssembly("StoreApp"));
+
+                // SQL server bağlantısı için bu ifade kullanılır.
+                options.UseSqlServer(configuration.GetConnectionString("sqlconnection2"),
                 b => b.MigrationsAssembly("StoreApp"));
 
                 options.EnableSensitiveDataLogging(true);

@@ -16,10 +16,10 @@ namespace StoreApp.Infrastructure.Extensions
             // veritabanında her güncellemeden sonra manuel olarak girilen "dotnet ef database update" komutu yerine yapılan değişiklikleri otomatik olarak yapan kod bloğu tanımlandı.
             // Sadece uygulama ilk başladığında init yapmak gerekiyor. Geri kalanı kendisi update yapacaktır.
 
-            // if (context.Database.GetPendingMigrations().Any())
-            // {
-            //     context.Database.Migrate();
-            // }
+            if (context.Database.GetPendingMigrations().Any())
+            {
+                context.Database.Migrate();
+            }
         }
         // Para birimleri ölçü birimleri için yerelleştirme ve genelleştirme yapmak için bu tarz fonksiyonlar kullanılır.
         public static void ConfigureLocalization(this WebApplication app)
