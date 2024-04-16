@@ -20,19 +20,22 @@ namespace Store.StoreApp
             var products = _manager.ProductService.GetAllProductsWithDetails(p);
             var pagination = new Pagination()
             {
-                CurrentPage=p.PageNumber,
-                ItemsPerPage=p.PageSize,
-                TotalItmes=_manager.ProductService.GetAllProducts(false).Count(),
+                CurrentPage = p.PageNumber,
+                ItemsPerPage = p.PageSize,
+                TotalItmes = _manager.ProductService.GetAllProducts(false).Count(),
             };
-            return View(new ProductListViewModel(){
-                Products=products,
-                Pagination=pagination
+            ViewData["Title"] = "Products";
+            return View(new ProductListViewModel()
+            {
+                Products = products,
+                Pagination = pagination
 
             });
         }
         public IActionResult Get([FromRoute(Name = "id")] int id)
         {
             var model = _manager.ProductService.GetOneProduct(id, false);
+            ViewData["Title"]=model?.ProductName;
             return View(model);
         }
 

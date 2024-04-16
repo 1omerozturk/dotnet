@@ -18,7 +18,8 @@ namespace StoreApp.Controllers
 
         
         [Authorize]
-        public ViewResult Checkout() => View(new Order());
+        public ViewResult Checkout() => 
+        View(new Order());
 
         [HttpPost]
         [ValidateAntiForgeryToken]

@@ -1,0 +1,41 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    
+@if (TempData["info"] is not null)
+{
+     <div class="alert alert-info my-3 alert-dismissible fade show" role="alert">
+       <b> @TempData["info"]</b>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div> 
+
+}
+
+@if (TempData["success"] is not null)
+{
+    <div class="alert alert-success alert-dismissible fade show my-3" role="alert">
+       <b>
+        @TempData["success"]
+       </b>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+}
+
+@if (TempData["danger"] is not null)
+{
+    <div class="alert alert-danger my-3 alert-dismissible fade show" role="alert">
+        <s>@TempData["danger"]</s>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>

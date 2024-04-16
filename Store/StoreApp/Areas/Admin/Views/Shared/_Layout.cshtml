@@ -2,15 +2,16 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Admin - @ViewData["Title"]</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css"  asp-append-version="true" />
-    <link rel="stylesheet"  href="~/lib/font-awesome/css/all.css" />
+    <link rel="stylesheet" asp-append-version="true" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" asp-append-version="true" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" asp-append-version="true" href="~/lib/font-awesome/css/all.css" />
+    <link rel="icon" href='@Url.Content("~/images/favicon.ico")' type="image/x-icon">
 </head>
 
 
@@ -24,8 +25,8 @@
 
     </header>
 
-
-    <main>
+    <partial name="_Notification" />
+    <main role="main" class="pb-3">
         @RenderBody()
 
     </main>
@@ -42,7 +43,9 @@
     <script src="~/lib/font-awesome/js/all.min.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
-
+    <script>
+        $(".alert").alert();
+    </script>
 </body>
 
 </html>

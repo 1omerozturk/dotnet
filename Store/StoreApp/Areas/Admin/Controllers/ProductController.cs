@@ -23,6 +23,7 @@ namespace StoreApp.Areas.Admin.Controllers
 
         public IActionResult Index([FromQuery] ProductRequestParameters p)
         {
+            ViewData["Title"]="Products";
             var model = _manager.ProductService.GetAllProductsWithDetails(p);
             var pagination=new Pagination(){
                 CurrentPage=p.PageNumber,
@@ -84,6 +85,9 @@ namespace StoreApp.Areas.Admin.Controllers
                 productDto.ImageUrl=String.Concat("/images/",file.FileName);
                 _manager.ProductService.CreateProduct(productDto);
 
+                // notification
+                TempData["success"]=$"{productDto.ProductName} has been created.";
+
                 return RedirectToAction("Index");
             }
             return View();
@@ -93,6 +97,7 @@ namespace StoreApp.Areas.Admin.Controllers
         {
             var model = _manager.ProductService.GetOneProductForUpdate(id, false);
                ViewBag.Categories =GetCategoriesSelectList();
+            ViewData["Title"]=model?.ProductName;
             return View(model);
         }
 
@@ -119,6 +124,7 @@ namespace StoreApp.Areas.Admin.Controllers
         public IActionResult Delete([FromRoute(Name = "id")] int id)
         {
             _manager.ProductService.DeleteOneProduct(id);
+            TempData["danger"]="The product has been removed";
             return RedirectToAction("Index");
         }
 
